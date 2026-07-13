@@ -2,12 +2,12 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-COPY backend/package*.json ./
+COPY package*.json ./
 
-RUN npm install
+RUN npm install --only=production
 
-COPY backend/ ./
+COPY api/ ./api/
 
-RUN npm run build
+RUN npx tsc -p api/tsconfig.json
 
-CMD ["node", "dist/index.js"]
+CMD ["node", "dist/server/index.js"]

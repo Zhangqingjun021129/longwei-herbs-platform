@@ -1,6 +1,11 @@
 {
   "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "command": "npm install && npx tsc -p api/tsconfig.json",
+    "output": "dist/server"
+  },
   "deploy": {
+    "startCommand": "node dist/server/index.js",
     "env": {
       "NODE_ENV": "production",
       "JWT_SECRET": "your-secure-jwt-secret-change-in-production"
