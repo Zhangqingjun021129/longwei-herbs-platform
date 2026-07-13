@@ -4,10 +4,12 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install --only=production
+RUN npm install
 
-COPY api/ ./api/
+COPY . .
 
-RUN npx tsc -p api/tsconfig.json
+RUN npm run build:client
+
+RUN npm run build:server
 
 CMD ["node", "dist/server/index.js"]
