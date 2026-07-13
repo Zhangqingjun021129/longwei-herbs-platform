@@ -8,7 +8,7 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build:server
+RUN npx tsc -p api/tsconfig.json
 
 FROM node:20-alpine
 
