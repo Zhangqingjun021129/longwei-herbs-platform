@@ -1,6 +1,6 @@
 {
   "name": "longwei-herbs-ecommerce-platform",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Longwei Herbs E-commerce Platform",
   "scripts": {
     "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
