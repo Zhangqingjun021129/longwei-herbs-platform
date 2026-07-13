@@ -2,25 +2,12 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY backend/package*.json ./
 
-RUN npm install --only=production
+RUN npm install
 
-RUN npm install typescript @types/node --save-dev
+COPY backend/ ./
 
-COPY api/ ./api/
+RUN npm run build
 
-WORKDIR /app/api
-
-RUN npx tsc -p tsconfig.json
-
-WORKDIR /app
-
-RUN ls -la dist/
-
-EXPOSE 3001
-
-ENV NODE_ENV=production
-ENV JWT_SECRET=your-secure-jwt-secret-change-in-production
-
-CMD ["node", "--trace-uncaught", "dist/index.js"]
+CMD ["node", "dist/index.js"]

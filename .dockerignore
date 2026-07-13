@@ -9,3 +9,5 @@ src/
 .dockerignore
 railway.json
 vercel.json
+backend/node_modules/
+backend/dist/

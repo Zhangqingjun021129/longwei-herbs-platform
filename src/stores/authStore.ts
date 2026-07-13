@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { User, LoginForm, RegisterForm } from '@/types';
+import { apiClient } from '@/api';
 
 interface AuthStore {
   user: User | null;
@@ -18,18 +19,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
   
   login: async (credentials) => {
     try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(credentials),
-      });
-      
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || '登录失败');
-      }
-      
-      const data = await response.json();
+      const data = await apiClient.post('/api/auth/login', credentials);
       localStorage.setItem('token', data.token);
       set({ 
         user: data.user, 
@@ -43,18 +33,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
   
   register: async (data) => {
     try {
-      const response = await fetch('/api/auth/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-      
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || '注册失败');
-      }
-      
-      const result = await response.json();
+      const result = await apiClient.post('/api/auth/register', data);
       localStorage.setItem('token', result.token);
       set({ 
         user: result.user, 
@@ -76,14 +55,10 @@ export const useAuthStore = create<AuthStore>((set) => ({
     if (!token) return;
     
     try {
-      const response = await fetch('/api/auth/me', {
+      const user = await apiClient.get('/api/auth/me', {
         headers: { 'Authorization': `Bearer ${token}` },
       });
-      
-      if (response.ok) {
-        const user = await response.json();
-        set({ user, isLoggedIn: true });
-      }
+      set({ user, isLoggedIn: true });
     } catch {
       localStorage.removeItem('token');
       set({ user: null, token: null, isLoggedIn: false });
