@@ -2,10 +2,6 @@
   "buildCommand": "npm run build:client",
   "outputDirectory": "dist",
   "framework": "vite",
-  "env": {
-    "NODE_ENV": "production",
-    "VITE_API_URL": "https://longwei-herbs-platform-production.up.railway.app"
-  },
   "routes": [
     {
       "src": "/(.*)",
