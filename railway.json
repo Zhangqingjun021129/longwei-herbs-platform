@@ -3,7 +3,6 @@
   "deploy": {
     "env": {
       "NODE_ENV": "production",
-      "PORT": "3001",
       "JWT_SECRET": "your-secure-jwt-secret-change-in-production"
     }
   }

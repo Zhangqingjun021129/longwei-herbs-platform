@@ -21,7 +21,6 @@ RUN ls -la dist/
 EXPOSE 3001
 
 ENV NODE_ENV=production
-ENV PORT=3001
 ENV JWT_SECRET=your-secure-jwt-secret-change-in-production
 
-CMD ["node", "--trace-uncaught", "--abort-on-uncaught-exception", "dist/index.js"]
+CMD ["node", "--trace-uncaught", "dist/index.js"]
