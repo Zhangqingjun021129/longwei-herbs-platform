@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { getSupabase, hasDatabase } from '../config/supabase';
 
 const mockSalesData = [
   { id: '1', date: '2024-01-15', revenue: 12500, orders: 85, platform: 'taobao' },
@@ -15,36 +14,16 @@ export const getSalesData = async (req: Request, res: Response) => {
   const { startDate, endDate } = req.query;
   
   try {
-    if (hasDatabase()) {
-      const supabase = getSupabase();
-      let query = supabase!.from('sales_data').select('*');
-      
-      if (startDate) {
-        query = query.gte('sale_date', startDate);
-      }
-      if (endDate) {
-        query = query.lte('sale_date', endDate);
-      }
-      
-      const { data: salesData, error } = await query.order('sale_date', { ascending: true });
-      
-      if (error) {
-        return res.status(500).json({ message: '获取销售数据失败' });
-      }
-      
-      res.json(salesData);
-    } else {
-      let filteredData = mockSalesData;
-      
-      if (startDate) {
-        filteredData = filteredData.filter((item) => item.date >= (startDate as string));
-      }
-      if (endDate) {
-        filteredData = filteredData.filter((item) => item.date <= (endDate as string));
-      }
-      
-      res.json(filteredData);
+    let filteredData = mockSalesData;
+    
+    if (startDate) {
+      filteredData = filteredData.filter((item) => item.date >= (startDate as string));
     }
+    if (endDate) {
+      filteredData = filteredData.filter((item) => item.date <= (endDate as string));
+    }
+    
+    res.json(filteredData);
   } catch (error) {
     res.status(500).json({ message: '服务器错误' });
   }
@@ -88,32 +67,15 @@ export const getConversionData = async (req: Request, res: Response) => {
 
 export const getReport = async (req: Request, res: Response) => {
   try {
-    if (hasDatabase()) {
-      const supabase = getSupabase();
-      
-      const { data: products } = await supabase!.from('products').select('id');
-      const { data: salesData } = await supabase!.from('sales_data').select('revenue');
-      
-      const totalSales = salesData?.reduce((sum: number, item: { revenue: number }) => sum + item.revenue, 0) || 0;
-      const totalOrders = salesData?.length || 0;
-      
-      res.json({
-        totalSales,
-        totalOrders,
-        productCount: products?.length || 0,
-        avgOrderValue: totalOrders > 0 ? (totalSales / totalOrders).toFixed(2) : '0',
-      });
-    } else {
-      const totalSales = mockSalesData.reduce((sum: number, item: { revenue: number }) => sum + item.revenue, 0);
-      const totalOrders = mockSalesData.reduce((sum: number, item: { orders: number }) => sum + item.orders, 0);
-      
-      res.json({
-        totalSales,
-        totalOrders,
-        productCount: 24,
-        avgOrderValue: totalOrders > 0 ? ((totalSales / totalOrders) * 100).toFixed(2) : '0',
-      });
-    }
+    const totalSales = mockSalesData.reduce((sum: number, item: { revenue: number }) => sum + item.revenue, 0);
+    const totalOrders = mockSalesData.reduce((sum: number, item: { orders: number }) => sum + item.orders, 0);
+    
+    res.json({
+      totalSales,
+      totalOrders,
+      productCount: 24,
+      avgOrderValue: totalOrders > 0 ? ((totalSales / totalOrders) * 100).toFixed(2) : '0',
+    });
   } catch (error) {
     res.status(500).json({ message: '服务器错误' });
   }
