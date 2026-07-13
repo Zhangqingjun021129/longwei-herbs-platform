@@ -1,6 +1,4 @@
-export const API_BASE_URL = '';
 import express from 'express';
-import path from 'path';
 import { PORT } from './config/env';
 import authRoutes from './routes/authRoutes';
 import productRoutes from './routes/productRoutes';
@@ -34,11 +32,6 @@ app.use('/api/platforms', platformRoutes);
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Longwei Herbs E-commerce Platform API running', version: 'v2.0.0' });
-});const clientBuildPath = path.join(__dirname, '../');
-app.use(express.static(clientBuildPath));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(clientBuildPath, 'index.html'));
 });
 
 process.on('uncaughtException', (error) => {
