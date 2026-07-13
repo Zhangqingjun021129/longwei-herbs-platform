@@ -1,4 +1,4 @@
-export const API_BASE_URL = '';
+export const API_BASE_URL = 'https://longwei-herbs-platform-production.up.railway.app';
 
 export const apiClient = {
   get: async <T>(endpoint: string, options?: RequestInit): Promise<T> => {
