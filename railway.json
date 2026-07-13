@@ -5,7 +5,7 @@
     "output": "dist"
   },
   "deploy": {
-    "startCommand": "node server/index.js",
+    "startCommand": "node dist/server/index.js",
     "env": {
       "NODE_ENV": "production",
       "JWT_SECRET": "your-secure-jwt-secret-change-in-production"
