@@ -2,6 +2,9 @@
   "$schema": "https://railway.app/railway.schema.json",
   "deploy": {
     "startCommand": "npm run build && npm run start",
-    ...
+    "env": {
+      "NODE_ENV": "production",
+      "JWT_SECRET": "your-secure-jwt-secret-change-in-production"
+    }
   }
 }
