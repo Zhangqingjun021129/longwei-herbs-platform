@@ -34,7 +34,7 @@ app.use('/api/platforms', platformRoutes);
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Longwei Herbs E-commerce Platform API running', version: 'v2.0.0' });
-});const clientBuildPath = path.join(__dirname, '../../dist');
+});const clientBuildPath = path.join(__dirname, '../');
 app.use(express.static(clientBuildPath));
 
 app.get('*', (req, res) => {
