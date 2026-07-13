@@ -31,7 +31,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/platforms', platformRoutes);
 
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', message: 'Longwei Herbs E-commerce Platform API running' });
+  res.json({ status: 'ok', message: 'Longwei Herbs E-commerce Platform API running', version: 'v2.0.0' });
 });
 
 process.on('uncaughtException', (error) => {
