@@ -1,6 +1,6 @@
 {
   "name": "longwei-herbs-ecommerce-platform",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "Longwei Herbs E-commerce Platform",
   "scripts": {
     "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
@@ -14,6 +14,10 @@
   },
   "dependencies": {
     "@types/dotenv": "^6.1.1",
+    "@types/node": "^22.20.1",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/express": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.7",
     "axios": "^1.7.7",
     "bcryptjs": "^2.4.3",
     "chart.js": "^4.4.8",
@@ -27,13 +31,10 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.28.0",
     "recharts": "^2.14.0",
+    "typescript": "^5.7.2",
     "zustand": "^5.0.1"
   },
   "devDependencies": {
-    "@types/bcryptjs": "^2.4.6",
-    "@types/express": "^5.0.0",
-    "@types/jsonwebtoken": "^9.0.7",
-    "@types/node": "^22.20.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.7.0",
@@ -42,7 +43,6 @@
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.14",
     "tsx": "^4.19.2",
-    "typescript": "^5.7.2",
     "vite": "^5.4.12"
   }
 }
