@@ -16,6 +16,7 @@ const memoryUsers: MemoryUser[] = [
   { id: '2', email: 'manager@longwei.com', password_hash: '$2a$10$X7dJKpTi6MX.xdMxJWlEKut70TQ1QnUZa6LwU1ZYxCuok/oVR5AnW', name: '李主管', role: 'manager' },
   { id: '3', email: 'operator@longwei.com', password_hash: '$2a$10$X7dJKpTi6MX.xdMxJWlEKut70TQ1QnUZa6LwU1ZYxCuok/oVR5AnW', name: '王专员', role: 'operator' },
   { id: '4', email: 'analyst@longwei.com', password_hash: '$2a$10$X7dJKpTi6MX.xdMxJWlEKut70TQ1QnUZa6LwU1ZYxCuok/oVR5AnW', name: '赵分析师', role: 'analyst' },
+];
 
 export const login = async (req: Request, res: Response) => {
   const { email, password } = req.body;
