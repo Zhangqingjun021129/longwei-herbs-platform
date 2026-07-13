@@ -12,12 +12,11 @@ interface MemoryUser {
 }
 
 const memoryUsers: MemoryUser[] = [
-  { id: '1', email: 'admin@longwei.com', password_hash: '$2a$10$X7dJKpTi6MX.xdMxJWlEKut70TQ1QnUZa6LwU1ZYxCuok/oVR5AnW', name: '张经理', role: 'admin' },
-  { id: '2', email: 'manager@longwei.com', password_hash: '$2a$10$X7dJKpTi6MX.xdMxJWlEKut70TQ1QnUZa6LwU1ZYxCuok/oVR5AnW', name: '李主管', role: 'manager' },
-  { id: '3', email: 'operator@longwei.com', password_hash: '$2a$10$X7dJKpTi6MX.xdMxJWlEKut70TQ1QnUZa6LwU1ZYxCuok/oVR5AnW', name: '王专员', role: 'operator' },
-  { id: '4', email: 'analyst@longwei.com', password_hash: '$2a$10$X7dJKpTi6MX.xdMxJWlEKut70TQ1QnUZa6LwU1ZYxCuok/oVR5AnW', name: '赵分析师', role: 'analyst' },
+  { id: '1', email: 'admin@longwei.com', password_hash: '$2a$10$HTlJj4mUE/X7kPzg3Sw1muC7pdZaF/qNJVQjIFLdjcXxNioc6QT5K', name: '张经理', role: 'admin' },
+  { id: '2', email: 'manager@longwei.com', password_hash: '$2a$10$HTlJj4mUE/X7kPzg3Sw1muC7pdZaF/qNJVQjIFLdjcXxNioc6QT5K', name: '李主管', role: 'manager' },
+  { id: '3', email: 'operator@longwei.com', password_hash: '$2a$10$HTlJj4mUE/X7kPzg3Sw1muC7pdZaF/qNJVQjIFLdjcXxNioc6QT5K', name: '王专员', role: 'operator' },
+  { id: '4', email: 'analyst@longwei.com', password_hash: '$2a$10$HTlJj4mUE/X7kPzg3Sw1muC7pdZaF/qNJVQjIFLdjcXxNioc6QT5K', name: '赵分析师', role: 'analyst' },
 ];
-
 export const login = async (req: Request, res: Response) => {
   const { email, password } = req.body;
   
