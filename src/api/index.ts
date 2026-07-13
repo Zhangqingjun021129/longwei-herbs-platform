@@ -1,8 +1,9 @@
-export const API_BASE_URL = 'https://longwei-herbs-platform-production.up.railway.app';
+export const API_BASE_URL = import.meta.env.VITE_API_URL || '';
 
 export const apiClient = {
   get: async <T>(endpoint: string, options?: RequestInit): Promise<T> => {
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    const url = API_BASE_URL ? `${API_BASE_URL}${endpoint}` : endpoint;
+    const response = await fetch(url, {
       ...options,
       headers: {
         'Content-Type': 'application/json',
@@ -10,14 +11,15 @@ export const apiClient = {
       },
     });
     if (!response.ok) {
-      const error = await response.json();
+      const error = await response.json().catch(() => ({ message: 'Request failed' }));
       throw new Error(error.message || 'Request failed');
     }
     return response.json();
   },
 
   post: async <T>(endpoint: string, body?: any, options?: RequestInit): Promise<T> => {
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    const url = API_BASE_URL ? `${API_BASE_URL}${endpoint}` : endpoint;
+    const response = await fetch(url, {
       method: 'POST',
       ...options,
       headers: {
@@ -27,14 +29,15 @@ export const apiClient = {
       body: body ? JSON.stringify(body) : undefined,
     });
     if (!response.ok) {
-      const error = await response.json();
+      const error = await response.json().catch(() => ({ message: 'Request failed' }));
       throw new Error(error.message || 'Request failed');
     }
     return response.json();
   },
 
   put: async <T>(endpoint: string, body?: any, options?: RequestInit): Promise<T> => {
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    const url = API_BASE_URL ? `${API_BASE_URL}${endpoint}` : endpoint;
+    const response = await fetch(url, {
       method: 'PUT',
       ...options,
       headers: {
@@ -44,14 +47,15 @@ export const apiClient = {
       body: body ? JSON.stringify(body) : undefined,
     });
     if (!response.ok) {
-      const error = await response.json();
+      const error = await response.json().catch(() => ({ message: 'Request failed' }));
       throw new Error(error.message || 'Request failed');
     }
     return response.json();
   },
 
   delete: async <T>(endpoint: string, options?: RequestInit): Promise<T> => {
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    const url = API_BASE_URL ? `${API_BASE_URL}${endpoint}` : endpoint;
+    const response = await fetch(url, {
       method: 'DELETE',
       ...options,
       headers: {
@@ -60,7 +64,7 @@ export const apiClient = {
       },
     });
     if (!response.ok) {
-      const error = await response.json();
+      const error = await response.json().catch(() => ({ message: 'Request failed' }));
       throw new Error(error.message || 'Request failed');
     }
     return response.json();
