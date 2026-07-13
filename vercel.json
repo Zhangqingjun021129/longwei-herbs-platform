@@ -1,0 +1,9 @@
+{
+  "buildCommand": "npm run build:client",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "env": {
+    "NODE_ENV": "production",
+    "VITE_API_URL": "@vercel/env"
+  }
+}

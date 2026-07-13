@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  font-family: 'Noto Sans SC', 'Inter', sans-serif;
+}
+
+body {
+  background-color: #f8fafc;
+  color: #2D3748;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:bg-primary-dark hover:shadow-md active:scale-95;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-100 text-dark px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:bg-gray-200 active:scale-95;
+  }
+  
+  .btn-gold {
+    @apply bg-gold text-primary-dark px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:bg-gold-dark active:scale-95;
+  }
+  
+  .btn-danger {
+    @apply bg-danger text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:bg-red-600 active:scale-95;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-100 p-6 transition-all duration-200 hover:shadow-md;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200;
+  }
+  
+  .input-field-error {
+    @apply w-full px-4 py-2 border border-danger rounded-lg focus:outline-none focus:ring-2 focus:ring-danger/50 focus:border-danger transition-all duration-200;
+  }
+  
+  .badge-success {
+    @apply bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .badge-warning {
+    @apply bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .badge-danger {
+    @apply bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .badge-info {
+    @apply bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .table-base {
+    @apply w-full text-sm text-left;
+  }
+  
+  .table-head {
+    @apply text-xs text-gray-500 uppercase bg-gray-50;
+  }
+  
+  .table-row {
+    @apply border-b border-gray-100 hover:bg-gray-50 transition-colors duration-150;
+  }
+}
+
+@keyframes counter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.counter-animate {
+  animation: counter 0.6s ease-out forwards;
+}
